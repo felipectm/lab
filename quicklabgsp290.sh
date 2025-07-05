@@ -23,8 +23,8 @@ pip install apache-beam[gcp]==2.59.0
 
 cd /dataflow
 
-export PROJECT=qwiklabs-gcp-04-ed2628fdd07e
-export REGION=us-west1
+export PROJECT=qwiklabs-gcp-01-5a76a5fd2947
+export REGION=europe-west4
 
 python dataflow_python_examples/data_ingestion.py \
   --project=$PROJECT --region=$REGION \
