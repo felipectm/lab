@@ -1,6 +1,4 @@
-export PROJECT = ${DEVSHELL_PROJECT_ID}
-
-gcloud config set project ${PROJECT}
+gcloud config set project ${DEVSHELL_PROJECT_ID}
 
 SERVICE_ACCOUNT=$(bq show --location=US --connection gemini_conn | grep "serviceAccountId" | awk -F'"' '{print $4}')
 
