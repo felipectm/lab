@@ -49,15 +49,24 @@ OPTIONS (
 
 
 
-
+echo "Executing first bq query..."
 bq query --use_legacy_sql=false \
 "
 CREATE OR REPLACE MODEL \`gemini_demo.gemini_2_0_flash\`
 REMOTE WITH CONNECTION \`us.gemini_conn\`
 OPTIONS (endpoint = 'gemini-2.0-flash')
 "
+FIRST_QUERY_STATUS=$?
+echo "First bq query completed with exit status: $FIRST_QUERY_STATUS"
 
+if [ "$FIRST_QUERY_STATUS" -ne 0 ]; then
+    echo "Error in first bq query. Exiting."
+    exit 1
+fi
+
+echo "Waiting for 10 seconds..."
 sleep 10
+echo "Done waiting. Proceeding to second bq query."
 
 bq query --use_legacy_sql=false \
 "
