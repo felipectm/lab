@@ -1,4 +1,7 @@
 
+export PROJECT = ${DEVSHELL_PROJECT_ID}
+
+gcloud config set project ${PROJECT}
 
 bq mk \
   --connection \
